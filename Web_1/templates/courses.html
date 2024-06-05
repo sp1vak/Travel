@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_name %}Курси{% endblock %}
+
+
+{% block content %}
+<!-- Breadcrumbs -->
+<section class="breadcrumbs-custom-inset">
+  <div class="breadcrumbs-custom context-dark bg-overlay-60">
+    <div class="container">
+      <h2 class="breadcrumbs-custom-title">Courses</h2>
+      <ul class="breadcrumbs-custom-path">
+        <li><a href="/">Home</a></li>
+        <li class="active">Courses</li>
+      </ul>
+    </div>
+    <div class="box-position" style="background-image: url({% static 'images/breadcrumbs-bg.png' %});"></div>
+  </div>
+</section>
+
+
+<section class="section section-lg section-top-1 bg-gray-4">
+    <div class="container offset-negative-1">
+      <div class="box-categories cta-box-wrap">
+        <div class="box-categories-content">
+          <div class="row justify-content-center">
+            {% for course in courses %}
+            <div class="col-md-4 wow fadeInDown col-9" data-wow-delay=".2s">
+              <ul class="list-marked-2 box-categories-list">
+                <li><a href="/course/{{ course.id }}"><img src="{{ course.image.url }}" alt="" width="368" height="420"/></a>
+                  <h5 class="box-categories-title">{{ course.name }}</h5>
+                </li>
+              </ul>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <!-- Owl Carousel-->
+    </div>
+</section>
+
+{% endblock content %}
+
+{% block navbar %}
+  <li class="rd-nav-item"><a class="rd-nav-link" href="/">Home</a>
+  </li>
+  <li class="rd-nav-item"><a class="rd-nav-link" href="/about/">About</a>
+  </li>
+  <li class="rd-nav-item active"><a class="rd-nav-link" href="/courses/">Courses</a>
+  </li>
+  <li class="rd-nav-item"><a class="rd-nav-link" href="/contact-us/">Contact Us</a>
+  </li>
+{% endblock %}

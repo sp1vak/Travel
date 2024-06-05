@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title_name %}Про нас{% endblock %}
+
+
+{% block content %}
+<!-- Breadcrumbs -->
+<section class="breadcrumbs-custom-inset">
+  <div class="breadcrumbs-custom context-dark bg-overlay-60">
+    <div class="container">
+      <h2 class="breadcrumbs-custom-title">Registration</h2>
+      <ul class="breadcrumbs-custom-path">
+        <li><a href="/">Home</a></li>
+        <li class="active">Registration</li>
+      </ul>
+    </div>
+    <div class="box-position" style="background-image: url({% static 'images/breadcrumbs-bg.png' %});"></div>
+  </div>
+</section>
+<!-- Why choose us-->
+<section class="section section-sm section-first bg-default text-md-left">
+    <div class="container">
+        <article class="title-classic">
+          <div class="title-classic-title">
+            <h3>Registration</h3>
+          </div>
+          <div class="title-classic-text">
+            <p>Type your username and password.</p>
+          </div>
+        </article>
+    <form class="rd-form rd-form-variant-2" data-form-output="form-output-global" data-form-type="contact-us" method="post" action="">
+        {% csrf_token %}
+        <div class="row row-14 gutters-14">
+          <div class="col-md-4">
+            <div class="form-wrap">
+                {% render_field form.username class="form-input" placeholder="Username" %}
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-wrap">
+                {% render_field form.password1 class="form-input" placeholder="Password" %}
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-wrap">
+                {% render_field form.password2 class="form-input" placeholder="Password confirmation" %}
+            </div>
+          </div>
+        </div>
+        <button class="button button-primary button-pipaluk" type="submit">Send Message</button>
+        {% if form.errors %}
+          {{ form.errors }}
+        {% endif %}
+    </form>
+    <strong>If you already have an account, <a href="/users/login/">Sign In!</a></strong>
+    </div>
+</section>
+<!-- What people Say-->
+
+
+{% endblock content %}
+
+{% block navbar %}
+  <li class="rd-nav-item"><a class="rd-nav-link" href="/">Home</a>
+  </li>
+  <li class="rd-nav-item"><a class="rd-nav-link" href="/about/">About</a>
+  </li>
+  <li class="rd-nav-item"><a class="rd-nav-link" href="/courses/">Courses</a>
+  </li>
+  <li class="rd-nav-item"><a class="rd-nav-link" href="/contact-us/">Contact Us</a>
+  </li>
+{% endblock %}

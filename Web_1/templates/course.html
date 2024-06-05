@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_name %}{{ course.name }}{% endblock %}
+
+{% block content %}
+
+<section class="breadcrumbs-custom-inset">
+  <div class="breadcrumbs-custom context-dark bg-overlay-60">
+    <div class="container">
+      <h2 class="breadcrumbs-custom-title">{{ course.name }}</h2>
+      <ul class="breadcrumbs-custom-path">
+        <li><a href="/">Home</a></li>
+        <li><a href="/courses/">Courses</a></li>
+        <li class="active">{{ course.name }}</li>
+      </ul>
+    </div>
+    <div class="box-position" style="background-image: url({% static 'images/breadcrumbs-bg.png' %});"></div>
+  </div>
+</section>
+
+<!-- Discover New Horizons-->
+<section class="section section-sm section-first bg-default text-md-left">
+  <div class="container">
+    <div class="row row-50 align-items-center justify-content-center justify-content-xl-between">
+      <div class="col-lg-6 text-center wow fadeInUp"><img src="{{ course.image.url }}" alt="" width="556" height="382"/>
+      </div>
+      <div class="col-lg-6 wow fadeInRight" data-wow-delay=".1s">
+        <div class="box-width-lg-470">
+          <h3>{{ course.name }}</h3>
+          <!-- Bootstrap tabs-->
+          <div class="tabs-custom tabs-horizontal tabs-line tabs-line-big tabs-line-style-2 text-center text-md-left" id="tabs-7">
+            <!-- Nav tabs-->
+            <ul class="nav nav-tabs">
+              <li class="nav-item" role="presentation"><a class="nav-link active" href="#tabs-7-1" data-toggle="tab">About</a></li>
+              <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-7-2" data-toggle="tab">Price</a></li>
+              <li class="nav-item" role="presentation"><a class="nav-link" href="#tabs-7-3" data-toggle="tab">Age</a></li>
+            </ul>
+            <!-- Tab panes-->
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="tabs-7-1">
+                <p>{{ course.description }}</p>
+                <div class="group-md group-middle"><a class="button button-secondary button-pipaluk" href="/contact-us/">Get in Touch</a></div>
+              </div>
+              <div class="tab-pane fade" id="tabs-7-2">
+                <p>{{ course.price }}</p>
+                <div class="group-md group-middle"><a class="button button-secondary button-pipaluk" href="/contact-us/">Get in Touch</a></div>
+              </div>
+              <div class="tab-pane fade" id="tabs-7-3">
+                <p>{{ course.kid_age }}</p>
+                <div class="group-md group-middle"><a class="button button-secondary button-pipaluk" href="/contact-us/">Get in Touch</a></div>
+              </div><a class="link-classic wow fadeInUp" href="/courses/">Other Courses<span></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block navbar %}
+  <li class="rd-nav-item"><a class="rd-nav-link" href="/">Home</a>
+  </li>
+  <li class="rd-nav-item"><a class="rd-nav-link" href="/about/">About</a>
+  </li>
+  <li class="rd-nav-item active"><a class="rd-nav-link" href="/courses/">Courses</a>
+  </li>
+  <li class="rd-nav-item"><a class="rd-nav-link" href="/contact-us/">Contact Us</a>
+  </li>
+{% endblock %}
